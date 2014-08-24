@@ -1,0 +1,14 @@
+{
+  "name": "reload-json",
+  "version": "0.1.0",
+  "description": "automatic reload of json",
+  "main": "lib/reload",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "David Keijser <keijser@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "debounce": "^1.0.0"
+  }
+}
