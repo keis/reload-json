@@ -16,11 +16,11 @@ merged into a single `fs.readFile`
 
     reloader.on('error', function (err) {
         console.log('an error occured', err);
-    }
+    });
 
     reload.load('path/to/file.json', function (err, data) {
         // do stuff
-    }
+    });
 
 ## Installation
 
