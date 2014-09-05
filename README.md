@@ -8,6 +8,7 @@ As an added bonus multiple requests for the same file in short sequence will be
 merged into a single `fs.readFile`
 
 [![Build Status](https://travis-ci.org/keis/json-reload.svg?branch=master)](https://travis-ci.org/keis/json-reload)
+[![Coverage Status](https://coveralls.io/repos/keis/json-reload/badge.png?branch=master)](https://coveralls.io/r/keis/json-reload?branch=master)
 
 ## Usage
 
