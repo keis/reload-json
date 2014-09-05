@@ -23,5 +23,8 @@ coverage/coverage.json: $(SRC) $(TESTSRC)
 coverage/coverage.json:
 	$(ISTANBUL) cover $(MOCHA) -- --require test/bootstrap.js --compilers coffee:coffee-script/register --recursive ${TESTDIR}
 
+coverage/lcov.info: coverage/coverage.json
+	 $(ISTANBUL) report lcov
+
 coverage/index.html: coverage/coverage.json
 	$(ISTANBUL) report html
