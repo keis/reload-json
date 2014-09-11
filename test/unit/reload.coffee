@@ -131,4 +131,22 @@ describe "reload-json", ->
                 return
 
             reload.load 'foo', (err, data) ->
+                assert.instanceOf err, Error
                 done()
+
+        it "cleans up subscribers after loading", (done) ->
+            callback = sinon.stub()
+            err = new Error 'dummy-error'
+            file = new EventEmitter
+
+            reload.read = sinon.stub().returns file
+
+            reload.load 'foo', callback
+
+            file.emit 'error', err
+            file.emit 'load'
+
+            assert.calledOnce callback
+            assert.calledWith callback, sinon.match.instanceOf Error
+            assert.lengthOf file.listeners('load'), 0
+            done()

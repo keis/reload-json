@@ -13,7 +13,8 @@
     "url": "https://github.com/keis/reload-json.git"
   },
   "dependencies": {
-    "debounce": "^1.0.0"
+    "debounce": "^1.0.0",
+    "ee-first": "^1.0.5"
   },
   "devDependencies": {
     "chai": "^1.9.1",
