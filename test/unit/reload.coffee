@@ -150,3 +150,10 @@ describe "reload-json", ->
             assert.calledWith callback, sinon.match.instanceOf Error
             assert.lengthOf file.listeners('load'), 0
             done()
+
+        it "should return a thunk", (done) ->
+            thunk = reload.load 'foo'
+            thunk (err, data) ->
+                assert.isNull err
+                assert.propertyVal data, 'key', 'data'
+                done()
