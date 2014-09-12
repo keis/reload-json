@@ -1,6 +1,6 @@
 {
   "name": "reload-json",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "automatic reload of json",
   "main": "lib/reload",
   "scripts": {
