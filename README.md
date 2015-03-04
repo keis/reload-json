@@ -8,8 +8,8 @@ As an added bonus multiple requests for the same file in short sequence will be
 merged into a single `fs.readFile`
 
 [![NPM Version][npm-image]](https://npmjs.org/package/reload-json)
-[![Build Status][travis-image]](https://travis-ci.org/keis/json-reload)
-[![Coverage Status][coveralls-image]](https://coveralls.io/r/keis/json-reload?branch=master)
+[![Build Status][travis-image]](https://travis-ci.org/keis/reload-json)
+[![Coverage Status][coveralls-image]](https://coveralls.io/r/keis/reload-reload?branch=master)
 
 ## Usage
 
