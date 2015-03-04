@@ -7,8 +7,9 @@ time the data is requested.
 As an added bonus multiple requests for the same file in short sequence will be
 merged into a single `fs.readFile`
 
-[![Build Status](https://travis-ci.org/keis/json-reload.svg?branch=master)](https://travis-ci.org/keis/json-reload)
-[![Coverage Status](https://coveralls.io/repos/keis/json-reload/badge.png?branch=master)](https://coveralls.io/r/keis/json-reload?branch=master)
+[![NPM Version][npm-image]](https://npmjs.org/package/reload-json)
+[![Build Status][travis-image]](https://travis-ci.org/keis/json-reload)
+[![Coverage Status][coveralls-image]](https://coveralls.io/r/keis/json-reload?branch=master)
 
 ## Usage
 
@@ -26,3 +27,8 @@ merged into a single `fs.readFile`
 ## Installation
 
     npm install reload-json
+
+
+[npm-image]: https://img.shields.io/npm/v/reload-json.svg?style=flat
+[travis-image]: https://img.shields.io/travis/keis/reload-json.svg?style=flat
+[coveralls-image]: https://img.shields.io/coveralls/keis/reload-json.svg?style=flat
