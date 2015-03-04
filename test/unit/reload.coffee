@@ -84,6 +84,14 @@ describe "reload-json", ->
                 done()
             ), 25
 
+        it "forwards change event", (done) ->
+            reload.configureWatch 'foo'
+            reload.on 'change', (filename) ->
+                assert.equal filename, 'foo'
+                done()
+
+            watch.emit 'change', 'foo'
+
         it "forwards any error that occurs", (done) ->
             err = new Error 'dummy-error'
             reload.configureWatch 'foo'
