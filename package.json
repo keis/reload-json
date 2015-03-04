@@ -4,10 +4,17 @@
   "description": "automatic reload of json",
   "main": "lib/reload",
   "scripts": {
-    "test": "mocha --require test/bootstrap.js --compilers coffee:coffee-script/register --recursive test/unit test/component"
+    "test": "mocha --require test/bootstrap.js --compilers coffee:coffee-script/register --recursive test/unit test/component",
+    "coverage": "istanbul cover _mocha --report lcovonly -- --require test/bootstrap.js --compilers coffee:coffee-script/register --recursive test/unit test/component",
+    "billom": "billom package.json \"$npm_package_name\" > package.html",
+    "docs": "docco lib/*.js"
   },
   "author": "David Keijser <keijser@gmail.com>",
   "license": "MIT",
+  "files": [
+    "README.md",
+    "lib/reload.js"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/keis/reload-json.git"
