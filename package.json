@@ -24,6 +24,7 @@
     "ee-first": "^1.0.5"
   },
   "devDependencies": {
+    "billom": "^1.0.2",
     "chai": "^2.1.0",
     "coffee-script": "^1.8.0",
     "coveralls": "^2.11.1",
