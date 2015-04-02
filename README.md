@@ -1,15 +1,15 @@
 # reload-json
 
+[![NPM Version][npm-image]](https://npmjs.org/package/reload-json)
+[![Build Status][travis-image]](https://travis-ci.org/keis/reload-json)
+[![Coverage Status][coveralls-image]](https://coveralls.io/r/keis/reload-reload?branch=master)
+
 This module provides a way of loading JSON from disk in a way so that you know
 you always have the latest data without necessarily reloading the file every
 time the data is requested.
 
 As an added bonus multiple requests for the same file in short sequence will be
 merged into a single `fs.readFile`
-
-[![NPM Version][npm-image]](https://npmjs.org/package/reload-json)
-[![Build Status][travis-image]](https://travis-ci.org/keis/reload-json)
-[![Coverage Status][coveralls-image]](https://coveralls.io/r/keis/reload-reload?branch=master)
 
 ## Usage
 
