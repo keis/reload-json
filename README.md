@@ -2,7 +2,7 @@
 
 [![NPM Version][npm-image]](https://npmjs.org/package/reload-json)
 [![Build Status][travis-image]](https://travis-ci.org/keis/reload-json)
-[![Coverage Status][coveralls-image]](https://coveralls.io/r/keis/reload-reload?branch=master)
+[![Coverage Status][coveralls-image]](https://coveralls.io/r/keis/reload-json?branch=master)
 
 This module provides a way of loading JSON from disk in a way so that you know
 you always have the latest data without necessarily reloading the file every
