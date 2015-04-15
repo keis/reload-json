@@ -21,9 +21,14 @@ describe "reload-json", ->
   beforeEach (done) ->
     errorcb = sinon.stub()
     reload = new Reload
+      delay: 50
     reload.on 'error', errorcb
     fs.writeFile filepath, JSON.stringify(file: 'test.json'), (err) ->
       done()
+
+  afterEach (done) ->
+    # wait for debounce
+    setTimeout done, 50
 
   it "returns the same data when reading the same file", (done) ->
     readOne = null

@@ -90,7 +90,8 @@ describe "reload-json", ->
       reload.configureWatch 'foo'
       reload.on 'change', (ev, filename) ->
         assert.equal filename, 'foo'
-        done()
+        # wait for debounce
+        setTimeout done, 20
 
       watch.emit 'change', 'change', 'foo'
 
