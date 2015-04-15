@@ -56,14 +56,16 @@ describe "reload-json", ->
       reload.read 'foo'
 
   describe "#configureWatch", ->
-    it "configures a filesystem watch", ->
+    it "configures a filesystem watch", (done) ->
       reload.configureWatch 'foo'
-      assert.calledOnce fsMock.watch
-      assert.calledWith fsMock.watch, 'foo'
+      process.nextTick ->
+        assert.calledOnce fsMock.watch
+        assert.calledWith fsMock.watch, 'foo'
+        done()
 
     it "triggers a read on change", (done) ->
       reload.configureWatch 'foo'
-      watch.emit 'change'
+      watch.emit 'change', 'change', 'foo'
 
       setTimeout (->
         assert.calledOnce fsMock.readFile
@@ -73,7 +75,7 @@ describe "reload-json", ->
 
     it "checks if a read is in progress before triggering", (done) ->
       reload.configureWatch 'foo'
-      watch.emit 'change'
+      watch.emit 'change', 'change', 'foo'
 
       setTimeout (->
         reload.files['foo'] = {}
@@ -86,11 +88,12 @@ describe "reload-json", ->
 
     it "forwards change event", (done) ->
       reload.configureWatch 'foo'
-      reload.on 'change', (filename) ->
+      reload.on 'change', (ev, filename) ->
         assert.equal filename, 'foo'
-        done()
+        # wait for debounce
+        setTimeout done, 20
 
-      watch.emit 'change', 'foo'
+      watch.emit 'change', 'change', 'foo'
 
     it "forwards any error that occurs", (done) ->
       err = new Error 'dummy-error'
