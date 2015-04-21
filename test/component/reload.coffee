@@ -22,7 +22,6 @@ describe "reload-json", ->
     errorcb = sinon.stub()
     reload = new Reload
       delay: 50
-    reload.on 'error', errorcb
     fs.writeFile filepath, JSON.stringify(file: 'test.json'), (err) ->
       done()
 

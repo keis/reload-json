@@ -27,12 +27,11 @@ describe "reload-json", ->
       assert.calledOnce fsMock.readFile
       assert.calledWith fsMock.readFile, 'foo'
 
-    it "handels file once loaded", (done) ->
-      reload.on 'load', ->
+    it "caches file once loaded", (done) ->
+      read = reload.read 'foo'
+      read.on 'load', ->
         assert.propertyVal reload.files.foo, 'key', 'data'
         done()
-
-      reload.read 'foo'
 
     it "deals with errors while reading the file ", (done) ->
       err = new Error 'dummy-error'
@@ -40,20 +39,19 @@ describe "reload-json", ->
       fsMock.readFile = sinon.stub()
         .callsArgWithAsync 1, err
 
-      reload.on 'error', ->
+      read = reload.read 'foo'
+      read.on 'error', ->
         assert.propertyVal reload.files, 'foo', null
         done()
 
-      reload.read 'foo'
-
     it "emits an error when receiving invalid json", (done) ->
-      reload.on 'error', ->
-        done()
-
       fsMock.readFile = sinon.stub()
         .callsArgWithAsync 1, null, '{blah'
 
-      reload.read 'foo'
+      read = reload.read 'foo'
+      read.on 'error', ->
+        done()
+
 
   describe "#configureWatch", ->
     it "configures a filesystem watch", (done) ->
@@ -86,6 +84,7 @@ describe "reload-json", ->
         done()
       ), 25
 
+    # Test of deprecated functionality
     it "forwards change event", (done) ->
       reload.configureWatch 'foo'
       reload.on 'change', (ev, filename) ->
@@ -94,16 +93,6 @@ describe "reload-json", ->
         setTimeout done, 20
 
       watch.emit 'change', 'change', 'foo'
-
-    it "forwards any error that occurs", (done) ->
-      err = new Error 'dummy-error'
-      reload.configureWatch 'foo'
-
-      reload.on 'error', (e) ->
-        assert.strictEqual e, err
-        done()
-
-      watch.emit 'error', err
 
   describe "#load", ->
     it "consolidates two reads into one", (done) ->
@@ -137,9 +126,6 @@ describe "reload-json", ->
 
       fsMock.readFile = sinon.stub()
         .callsArgWithAsync 1, err
-
-      reload.on 'error', ->
-        return
 
       reload.load 'foo', (err, data) ->
         assert.instanceOf err, Error
